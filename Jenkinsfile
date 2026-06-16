@@ -12,7 +12,8 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/Aisha-banu-shaik/node-jenkins-ec2.git'
+                git branch: 'main',
+                    url: 'https://github.com/Aisha-banu-shaik/node-jenkins-ec2.git'
             }
         }
 
