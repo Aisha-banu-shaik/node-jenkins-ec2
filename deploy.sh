@@ -12,7 +12,9 @@ stage('Deploy to EC2') {
         cd /home/ubuntu
 
         # Clone repo if not exists
-        if [ ! -d "node-jenkins-ec2" ]; then
+        if [ ! -d "node-jenkins-ec2" ]; 
+        
+        then
           git clone https://github.com/Aisha-banu-shaik/node-jenkins-ec2.git
         fi
 
