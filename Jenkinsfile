@@ -31,7 +31,7 @@ pipeline {
 
         stage('Deploy to AWS EC2') {
             steps {
-                sshagent(credentials: [env.SSH_CREDENTIALS]) {
+                sshagent(credentials: ['6404acf4-b109-4899-a954-d8e0d7be69c0']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/my_pem.pem ubuntu@3.27.255.175<< 'EOF'
 
