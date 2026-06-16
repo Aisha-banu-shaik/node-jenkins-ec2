@@ -1,15 +1,25 @@
 
-#!/bin/bash#!/bin ]; then
-    git clone https://github.com/YOUR_USERNAME/node-jenkins-ec2.git $APP_DIR
-fi
 
-cd $APP_DIR
+stage('Deploy to AWS EC2') {
+    steps {
+        sh '''
+        ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/my_pem.pem ubuntu@ip-172-31-14-74 << 'EOF'
+        set -e
 
-git pull origin main
-npm install
+        cd /home/ubuntu
 
-pm2 restart app || pm2 start app.js --name app
-``
+        if [ ! -d "node-jenkins-ec2" ]; then
+          git clone https://github.com/Aisha-banu-shaik/node-jenkins-ec2.git
+        fi
 
-APP_DIR="/home/ec2-user/app"
+        cd node-jenkins-ec2
+        git pull
 
+        npm install
+
+        pm2 restart app || pm2 start app.js
+
+        EOF
+        '''
+    }
+}
