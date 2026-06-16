@@ -1,32 +1,30 @@
 
 
 
-
 stage('Deploy to EC2') {
     steps {
         sh '''
-        ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/my_pem.pem ubuntu@3.27.255.175 << 'EOF'
+ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/my_pem.pem ubuntu@3.27.255.175 << 'EOF'
 
-        set -e
+set -e
 
-        cd /home/ubuntu
+cd /home/ubuntu
 
-        # Clone repo if not exists
-        if [ ! -d "node-jenkins-ec2" ]; 
-        
-        then
-          git clone https://github.com/Aisha-banu-shaik/node-jenkins-ec2.git
-        fi
+# Clone repo if not exists
+if [ ! -d "app" ]; then
+  git clone https://github.com/Aisha-banu-shaik/node-jenkins-ec2.git app
+fi
 
-        cd node-jenkins-ec2
+cd app
 
-        git pull origin main
+git pull origin main
 
-        npm install
+npm install
 
-        pm2 restart app || pm2 start app.js --name app
+pm2 restart app || pm2 start app.js --name app
 
-        EOF
+EOF
         '''
     }
 }
+
