@@ -12,7 +12,8 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/node-jenkins-ec2.git'
+                git credentialsId: 'github-creds',
+                   url: 'https://github.com/YOUR_USERNAME/node-jenkins-ec2.git'
             }
         }
 
