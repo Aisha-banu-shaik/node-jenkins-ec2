@@ -33,7 +33,7 @@ pipeline {
             steps {
                 sshagent(credentials: ['6404acf4-b109-4899-a954-d8e0d7be69c0']) {
                     sh """
-                        ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/my_pem.pem ubuntu@3.27.255.175 <<EOF
+                        ssh -o StrictHostKeyChecking=no -i /home/ubuntu/my_pem.pem ubuntu@3.27.255.175 <<EOF
 
                         if [ ! -d "app" ]; then
                           git clone https://github.com/YOUR_USERNAME/node-jenkins-ec2.git app
