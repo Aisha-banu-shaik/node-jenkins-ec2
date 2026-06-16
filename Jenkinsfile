@@ -8,9 +8,6 @@ pipeline {
         SSH_CREDENTIALS = 'ec2-ssh-key-id'
     }
     
-tools {
-        nodejs 'nodejs'
-    }
     stages {
 
         stage('Clone Repository') {
@@ -20,9 +17,14 @@ tools {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Install Node') {
             steps {
-                sh 'npm install'
+                sh 
+'''
+        curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+        '''
+
             }
         }
 
