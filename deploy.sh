@@ -3,7 +3,7 @@
 stage('Deploy to AWS EC2') {
     steps {
         sh '''
-        ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/my_pem.pem ubuntu@ip-172-31-14-74 << 'EOF'
+        ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/my_pem.pem ubuntu@3.25.52.34 << 'EOF'
         set -e
 
         cd /home/ubuntu
