@@ -2,6 +2,20 @@
 pipeline {
     agent any
 
+    
+tools {
+        nodejs 'nodejs'
+    }
+
+    stages {
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+    }
+
+
     environment {
         EC2_HOST = 'YOUR_EC2_PUBLIC_IP'
         EC2_USER = 'ec2-user'
