@@ -2,22 +2,15 @@
 pipeline {
     agent any
 
-    
-stages {
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-    }
-
-
     environment {
         EC2_HOST = 'YOUR_EC2_PUBLIC_IP'
         EC2_USER = 'ec2-user'
         SSH_CREDENTIALS = 'ec2-ssh-key-id'
     }
-
+    
+tools {
+        nodejs 'nodejs'
+    }
     stages {
 
         stage('Clone Repository') {
