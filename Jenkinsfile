@@ -3,11 +3,7 @@ pipeline {
     agent any
 
     
-tools {
-        nodejs 'nodejs'
-    }
-
-    stages {
+stages {
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
