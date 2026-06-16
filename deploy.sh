@@ -4,8 +4,7 @@
 stage('Deploy to EC2') {
     steps {
         sh '''
-ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/my_pem.pem ubuntu@3.27.255.175 << 'EOF'
-
+ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/my_pem.pem ubuntu@3.27.255.175 <<EOF
 set -e
 
 cd /home/ubuntu
@@ -27,4 +26,5 @@ EOF
         '''
     }
 }
+
 
